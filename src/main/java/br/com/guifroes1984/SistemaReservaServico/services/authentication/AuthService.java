@@ -6,5 +6,9 @@ import br.com.guifroes1984.SistemaReservaServico.dto.UsuarioDto;
 public interface AuthService {
 	
 	UsuarioDto inscricaoCliente(InscreverRequestDTO inscreverRequestDTO);
+	
+	Boolean presentePorEmail(String email);
+	
+	UsuarioDto inscricaoEmpresa(InscreverRequestDTO inscreverRequestDTO);
 
 }

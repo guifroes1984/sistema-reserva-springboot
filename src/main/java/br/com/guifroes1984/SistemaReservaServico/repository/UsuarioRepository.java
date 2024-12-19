@@ -7,5 +7,7 @@ import br.com.guifroes1984.SistemaReservaServico.entity.Usuario;
 
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+	
+	Usuario findFirstByEmail(String email);
 
 }

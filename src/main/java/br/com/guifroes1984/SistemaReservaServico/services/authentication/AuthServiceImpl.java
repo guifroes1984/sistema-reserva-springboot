@@ -28,5 +28,22 @@ public class AuthServiceImpl implements AuthService {
 		
 		return usuarioRepository.save(usuario).getDto();
 	}
+	
+	public Boolean presentePorEmail(String email) {
+		return usuarioRepository.findFirstByEmail(email) != null;
+	}
+	
+	public UsuarioDto inscricaoEmpresa(InscreverRequestDTO inscreverRequestDTO) {
+		Usuario usuario = new Usuario();
+		
+		usuario.setNome(inscreverRequestDTO.getNome());
+		usuario.setEmail(inscreverRequestDTO.getEmail());
+		usuario.setTelefone(inscreverRequestDTO.getTelefone());
+		usuario.setPassword(inscreverRequestDTO.getPassword());
+		
+		usuario.setRole(UsuarioRole.EMPRESA);
+		
+		return usuarioRepository.save(usuario).getDto();
+	}
 
 }
