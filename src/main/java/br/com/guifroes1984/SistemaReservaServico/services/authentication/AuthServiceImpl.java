@@ -1,6 +1,7 @@
 package br.com.guifroes1984.SistemaReservaServico.services.authentication;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import br.com.guifroes1984.SistemaReservaServico.dto.InscreverRequestDTO;
@@ -22,7 +23,7 @@ public class AuthServiceImpl implements AuthService {
 		usuario.setSobreNome(inscreverRequestDTO.getSobreNome());
 		usuario.setEmail(inscreverRequestDTO.getEmail());
 		usuario.setTelefone(inscreverRequestDTO.getTelefone());
-		usuario.setPassword(inscreverRequestDTO.getPassword());
+		usuario.setPassword(new BCryptPasswordEncoder().encode(inscreverRequestDTO.getPassword()));
 		
 		usuario.setRole(UsuarioRole.CLIENTE);
 		
@@ -39,7 +40,7 @@ public class AuthServiceImpl implements AuthService {
 		usuario.setNome(inscreverRequestDTO.getNome());
 		usuario.setEmail(inscreverRequestDTO.getEmail());
 		usuario.setTelefone(inscreverRequestDTO.getTelefone());
-		usuario.setPassword(inscreverRequestDTO.getPassword());
+		usuario.setPassword(new BCryptPasswordEncoder().encode(inscreverRequestDTO.getPassword()));
 		
 		usuario.setRole(UsuarioRole.EMPRESA);
 		
